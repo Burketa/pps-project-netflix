@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">netflix_clone</string>
+    <string name="black_mirror">Black Mirror</string>
+    <string name="season_episode">S03E01</string>
+    <string name="feedback">Your feedback here !</string>
+    <string name="send">Submit</string>
+    <string name="view_feedbacks_recycle">View Feedbacks\nRecycle</string>
+    <string name="view_feedbacks_card">View Feedbacks\nCard</string>
+</resources>

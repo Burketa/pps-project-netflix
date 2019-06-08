@@ -18,7 +18,7 @@ public class TrailersRecyclerViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedbacks_recycle);
+        setContentView(R.layout.activity_trailers_recycler);
 
         //Inicializa a lista
         List<Trailer> list = new ArrayList<>();

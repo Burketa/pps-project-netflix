@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">netflix_clone</string>
+    <string name="app_name">Trailerflix</string>
     <string name="black_mirror">Black Mirror</string>
     <string name="season_episode">S03E01</string>
     <string name="feedback">Your feedback here !</string>

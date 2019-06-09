@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.teamfive.trailerflix.R;
+import com.teamfive.trailerflix.activities.TrailersRecyclerViewActivity;
 import com.teamfive.trailerflix.model.Trailer;
 
 import java.io.Serializable;
@@ -29,12 +31,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        trailers = new ArrayList<>();
+        /*trailers = new ArrayList<>();
 
         //Referencias
         tv_feedback = findViewById(R.id.tv_feedback);
         cb_toast = findViewById(R.id.cb_toast);
-        radio_group = findViewById(R.id.rg_case);
+        radio_group = findViewById(R.id.rg_case);*/
 
     }
 
@@ -44,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         - Adiciona o feedback na lista
     */
     public void buttonSend(View view) {
-        String user_feedback = tv_feedback.getText().toString();
+        Toast.makeText(this, "Teste", Toast.LENGTH_SHORT).show();
+        /*String user_feedback = tv_feedback.getText().toString();
 
         Trailer current_feedback = new Trailer();
 
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        trailers.add(current_feedback);
+        trailers.add(current_feedback);*/
     }
 
     //Passa os dados para as novas activities

@@ -18,19 +18,20 @@ public class TrailersRecyclerViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedbacks_recycle);
+        setContentView(R.layout.activity_trailers_recycler);
 
         //Inicializa a lista
         List<Trailer> list = new ArrayList<>();
 
         //Pega o bundle da Main Activity
-        Bundle bundle = getIntent().getExtras();
-        list = (List<Trailer>) bundle.getSerializable("list");
+        //Bundle bundle = getIntent().getExtras();
+        //list = (List<Trailer>) bundle.getSerializable("list");
 
         //Se n;ao tiver nenhum item, gera uma lista generica
-        if(list.size() == 0) {
-            list = createFeedbacklist(list);
-        }
+        //if(list != null)
+           // if(list.size() == 0) {
+                list = createFeedbacklist(list);
+            //}
 
         //Referencias
         RecyclerView recyclerView;

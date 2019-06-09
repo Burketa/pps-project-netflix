@@ -23,7 +23,7 @@ public class AdapterTrailers extends RecyclerView.Adapter<AdapterTrailers.MyView
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View item_list = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.adapter_feedback, viewGroup, false);
+                .inflate(R.layout.adapter_trailer, viewGroup, false);
         return new MyViewHolder(item_list);
     }
 

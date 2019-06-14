@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.LinearLayout;
 
 import com.teamfive.trailerflix.R;
-import com.teamfive.trailerflix.adapters.AdapterTrailers;
+import com.teamfive.trailerflix.adapters.TrailersAdapter;
 import com.teamfive.trailerflix.model.Trailer;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class TrailersRecyclerViewActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.api_view);
 
         //Adapter
-        AdapterTrailers adapter = new AdapterTrailers(list);
+        TrailersAdapter adapter = new TrailersAdapter(list);
 
         //Layout Manager
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -50,11 +50,11 @@ public class TrailersRecyclerViewActivity extends AppCompatActivity {
 
     public List<Trailer> createFeedbacklist(List<Trailer> list) {
 
-        list.add(new Trailer("GOSTEI", "Upper", false));
-        list.add(new Trailer("nao gostei", "Lower", true));
-        list.add(new Trailer("testes1", "Lower", false));
-        list.add(new Trailer("Trailer", "Lower", true));
-        list.add(new Trailer("ENGRAÇADO !", "Upper", false));
+        list.add(new Trailer());
+        list.add(new Trailer());
+        list.add(new Trailer());
+        list.add(new Trailer());
+        list.add(new Trailer());
 
         return list;
     }

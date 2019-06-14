@@ -1,48 +1,79 @@
 package com.teamfive.trailerflix.model;
 
+import android.media.Image;
+
 import java.io.Serializable;
 
 public class Trailer implements Serializable {
 
+    public static final int ACAO = 0;
+    public static final int COMEDIA = 1;
 
-    private String feedback;
-    private String string_case;
-    private boolean toast_checked;
+    private int category;
+    private Image thumbnail;
+    private String title;
+    private String description;
+    private int launchYear;
+    private boolean isFavorite;
 
     public Trailer() {
-        this.feedback = "Null";
-        this.string_case = "Null";
-        this.toast_checked = false;
-    }
-
-    public Trailer(String feedback, String string_case, boolean toast_checked) {
-        this.feedback = feedback;
-        this.string_case = string_case;
-        this.toast_checked = toast_checked;
-    }
-
-    public String getString_case() {
-        return string_case;
-    }
-
-    public void setString_case(String string_case) {
-        this.string_case = string_case;
-    }
-
-    public String getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
 
     }
 
-    public boolean isToast_checked() {
-        return toast_checked;
+    public Trailer(int category, Image thumbnail, String title, String description, int launchYear, boolean isFavorite) {
+        this.category = category;
+        this.thumbnail = thumbnail;
+        this.title = title;
+        this.description = description;
+        this.launchYear = launchYear;
+        this.isFavorite = isFavorite;
     }
 
-    public void setToast_checked(boolean toast_checked) {
-        this.toast_checked = toast_checked;
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public Image getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(Image thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getLaunchYear() {
+        return launchYear;
+    }
+
+    public void setLaunchYear(int launchYear) {
+        this.launchYear = launchYear;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }

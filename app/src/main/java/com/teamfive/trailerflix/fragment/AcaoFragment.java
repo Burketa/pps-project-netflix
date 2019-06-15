@@ -1,4 +1,4 @@
-package com.teamfive.trailerflix.fragments;
+package com.teamfive.trailerflix.fragment;
 
 
 import android.os.Bundle;

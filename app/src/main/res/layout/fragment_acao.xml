@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AcaoFragment">
+    android:background="@color/colorPrimaryDark"
+    tools:context="com.teamfive.trailerflix.fragment.AcaoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Conversas"
+        android:text="Ação"
+        android:textColor="@android:color/white"
         android:textSize="36sp" />
 
 </FrameLayout>

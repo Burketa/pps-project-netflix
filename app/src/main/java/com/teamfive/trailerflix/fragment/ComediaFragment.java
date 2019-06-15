@@ -1,7 +1,6 @@
-package com.teamfive.trailerflix.fragments;
+package com.teamfive.trailerflix.fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,8 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.teamfive.trailerflix.R;
-import com.teamfive.trailerflix.activities.PlayerActivity;
-import com.teamfive.trailerflix.adapters.TrailersAdapter;
+import com.teamfive.trailerflix.adapter.TrailersAdapter;
 import com.teamfive.trailerflix.helper.RecyclerItemClickListener;
 import com.teamfive.trailerflix.model.Trailer;
 
@@ -39,12 +37,9 @@ public class ComediaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_comedia, container, false);
-        return view;
-    }
-}
-    /*
+
         //Configurações iniciais
-        recyclerView = view.findViewById(R.id.recyclerViewListaTrailer);
+        recyclerView = view.findViewById(R.id.recyclerViewListaContatos);
 
         //Popular lista de contatos estatica
         trailerList.add(new Trailer(1, null, "Comedia 1", "Engraçado 1", 2000, true));
@@ -53,7 +48,7 @@ public class ComediaFragment extends Fragment {
         trailerList.add(new Trailer(1, null, "Comedia 4", "Engraçado 4", 2003, false));
 
         //configurar adapter
-        adapter = new TrailersAdapter(trailerList);
+        adapter = new TrailersAdapter(trailerList, getActivity());
 
         //configurar recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -68,10 +63,11 @@ public class ComediaFragment extends Fragment {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                Trailer trailerSelecionado = trailerList.get(position);
-                                Intent i = new Intent(getActivity(), PlayerActivity.class);
-                                i.putExtra("trailer", trailerSelecionado);
-                                startActivity(i);
+                                Trailer trailer = trailerList.get(position);
+                                //Intent i = new Intent(getActivity(), ChatActivity.class);
+                                //i.putExtra("chatContato", usuarioSelecionado);
+                                // startActivity(i);
+
                             }
 
                             @Override
@@ -91,4 +87,3 @@ public class ComediaFragment extends Fragment {
     }
 
 }
-*/

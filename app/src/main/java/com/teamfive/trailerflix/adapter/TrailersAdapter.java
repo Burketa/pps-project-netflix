@@ -1,5 +1,6 @@
-package com.teamfive.trailerflix.adapters;
+package com.teamfive.trailerflix.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import java.util.List;
 public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.MyViewHolder> {
 
     List<Trailer> trailers;
+    Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView trailer;
@@ -25,13 +27,14 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.MyView
             super(itemView);
 
             trailer = itemView.findViewById(R.id.trailer_title);
-            trailer_category = itemView.findViewById(R.id.trailer_description);
-            trailer_description = itemView.findViewById(R.id.trailer_category);
+            trailer_description = itemView.findViewById(R.id.trailer_description);
+            trailer_category = itemView.findViewById(R.id.trailer_category);
         }
     }
 
-    public TrailersAdapter(List<Trailer> trailers) {
+    public TrailersAdapter(List<Trailer> trailers, Context context) {
         this.trailers = trailers;
+        this.context = context;
     }
 
     @Override
@@ -49,7 +52,6 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.MyView
 
         myViewHolder.trailer.setText(trailer.getTitle());
         myViewHolder.trailer_description.setText(trailer.getDescription());
-        myViewHolder.trailer_category.setText(trailer.getCategory());
 
         switch (trailer.getCategory())
         {

@@ -1,18 +1,20 @@
 package com.teamfive.trailerflix.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.teamfive.trailerflix.R;
+import com.teamfive.trailerflix.fragment.AcaoFragment;
+import com.teamfive.trailerflix.fragment.ComediaFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
-import com.teamfive.trailerflix.fragments.ComediaFragment;
-import com.teamfive.trailerflix.fragments.AcaoFragment;
-import com.teamfive.trailerflix.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,17 +23,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        setSupportActionBar(toolbar);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
-                        .add("Acao", AcaoFragment.class)
-                        .add("Comedia", ComediaFragment.class)
-                        .create()
+                .add("Açâo", AcaoFragment.class)
+                .add("Comédia", ComediaFragment.class)
+                .create()
         );
 
         ViewPager viewPager = findViewById(R.id.viewPager);
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch ( item.getItemId() ){
             case R.id.menuConfiguracoes :
-                //abrirConfiguracoes();
+                abrirConfiguracoes();
                 break;
         }
 
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void abrirConfiguracoes(){
-        //Intent intent = new Intent(PlayerActivity.this, ConfigActivity.class);
-        //startActivity( intent );
+        Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
+        startActivity( intent );
     }
 }

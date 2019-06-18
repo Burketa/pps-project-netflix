@@ -1,6 +1,7 @@
 package com.teamfive.trailerflix.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.teamfive.trailerflix.R;
+import com.teamfive.trailerflix.activities.PlayerActivity;
 import com.teamfive.trailerflix.adapter.TrailersAdapter;
 import com.teamfive.trailerflix.helper.RecyclerItemClickListener;
 import com.teamfive.trailerflix.model.Trailer;
@@ -64,9 +66,9 @@ public class ComediaFragment extends Fragment {
                             @Override
                             public void onItemClick(View view, int position) {
                                 Trailer trailer = trailerList.get(position);
-                                //Intent i = new Intent(getActivity(), ChatActivity.class);
-                                //i.putExtra("chatContato", usuarioSelecionado);
-                                // startActivity(i);
+                                Intent i = new Intent(getActivity(), PlayerActivity.class);
+                                i.putExtra("trailer", trailer);
+                                startActivity(i);
 
                             }
 

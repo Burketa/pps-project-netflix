@@ -155,61 +155,52 @@
             app:layout_constraintStart_toEndOf="@+id/time_current"
             app:layout_constraintTop_toBottomOf="@+id/img_player" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:textColorHint="@color/hintColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_pause"/>
-
         <CheckBox
-            android:id="@+id/cb_toast"
+            android:id="@+id/cb_favorite"
             style="?android:attr/starStyle"
-            app:theme="@style/CheckboxStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:checked="true"
+            android:checked="false"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toStartOf="@+id/vertical_guideline_2"
             app:layout_constraintStart_toEndOf="@+id/img_volume"
-            app:layout_constraintTop_toBottomOf="@+id/movie_title" />
+            app:layout_constraintTop_toBottomOf="@+id/movie_title"
+            app:theme="@style/CheckboxStyle" />
 
         <RadioGroup
-            android:id="@+id/rg_case"
+            android:id="@+id/rg_feedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:checkedButton="@id/rb_upper"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cb_toast"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/vertical_guideline_2"
+            app:layout_constraintStart_toStartOf="@+id/vertical_guideline_1"
+            app:layout_constraintTop_toBottomOf="@+id/img_pause">
 
             <RadioButton
-                android:id="@+id/rb_upper"
+                android:id="@+id/rb_positive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/white"
+                app:theme="@style/CheckboxStyle" />
+                <!--android:button="@drawable/ic_thumb_up_24dp"-->
+
+            <RadioButton
+                android:id="@+id/rb_negative"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Gostei"
-                android:textColor="@android:color/white" />
-
-            <RadioButton
-                android:id="@+id/rb_lower"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nao Gostei"
-                android:textColor="@android:color/white" />
+                android:layout_marginLeft="20dp"
+                android:textColor="@android:color/white"
+                app:theme="@style/CheckboxStyle" />
         </RadioGroup>
 
     </android.support.constraint.ConstraintLayout>

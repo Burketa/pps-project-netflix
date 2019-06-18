@@ -13,7 +13,7 @@ import com.teamfive.trailerflix.model.Trailer;
 
 import java.util.List;
 
-public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.MyViewHolder> {
+public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHolder> {
 
     List<Trailer> trailers;
     Context context;
@@ -32,7 +32,7 @@ public class TrailersAdapter extends RecyclerView.Adapter<TrailersAdapter.MyView
         }
     }
 
-    public TrailersAdapter(List<Trailer> trailers, Context context) {
+    public TrailerAdapter(List<Trailer> trailers, Context context) {
         this.trailers = trailers;
         this.context = context;
     }

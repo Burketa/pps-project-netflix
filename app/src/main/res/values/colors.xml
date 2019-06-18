@@ -5,4 +5,5 @@
     <color name="colorPrimaryDark">#313131</color>
     <color name="colorAccent">#CE1313</color>
     <color name="hintColor">#BEBEBE</color>
+    <color name="white">#FFFFFF</color>
 </resources>

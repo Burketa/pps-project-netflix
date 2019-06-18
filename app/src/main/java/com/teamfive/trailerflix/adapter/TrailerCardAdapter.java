@@ -33,9 +33,10 @@ public class TrailerCardAdapter extends RecyclerView.Adapter<TrailerCardAdapter.
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         Trailer trailer = trailers.get( position );
-        holder.textNome.setText( trailer.getTitle() );
-        holder.textPostagem.setText( trailer.getDescription() );
-        holder.imagePostagem.setImageResource( R.drawable.ic_enviar_branco_24dp );
+
+        holder.trailerTitle.setText( trailer.getTitle() );
+        holder.trailerDescription.setText( trailer.getDescription() );
+        holder.trailerThumbnail.setImageResource( R.drawable.ic_arrow_white_24dp );
 
     }
 
@@ -46,16 +47,16 @@ public class TrailerCardAdapter extends RecyclerView.Adapter<TrailerCardAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textNome;
-        private TextView textPostagem;
-        private ImageView imagePostagem;
+        private TextView trailerTitle;
+        private TextView trailerDescription;
+        private ImageView trailerThumbnail;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textNome = itemView.findViewById(R.id.textView3);
-            textPostagem = itemView.findViewById(R.id.textView4);
-            imagePostagem = itemView.findViewById(R.id.imageView5);
+            trailerTitle = itemView.findViewById(R.id.trailer_title);
+            trailerDescription = itemView.findViewById(R.id.trailer_description);
+            trailerThumbnail = itemView.findViewById(R.id.trailer_thumbnail);
         }
     }
 

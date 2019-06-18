@@ -13,7 +13,7 @@ import android.widget.AdapterView;
 
 import com.teamfive.trailerflix.R;
 import com.teamfive.trailerflix.activities.PlayerActivity;
-import com.teamfive.trailerflix.adapter.TrailersAdapter;
+import com.teamfive.trailerflix.adapter.TrailerAdapter;
 import com.teamfive.trailerflix.helper.RecyclerItemClickListener;
 import com.teamfive.trailerflix.model.Trailer;
 
@@ -26,7 +26,7 @@ public class ComediaFragment extends Fragment {
 
 
     private RecyclerView recyclerView;
-    private TrailersAdapter adapter;
+    private TrailerAdapter adapter;
     private ArrayList<Trailer> trailerList = new ArrayList<>();
 
     public ComediaFragment() {
@@ -50,7 +50,7 @@ public class ComediaFragment extends Fragment {
         trailerList.add(new Trailer(1, null, "Comedia 4", "Engraçado 4", 2003, false));
 
         //configurar adapter
-        adapter = new TrailersAdapter(trailerList, getActivity());
+        adapter = new TrailerAdapter(trailerList, getActivity());
 
         //configurar recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());

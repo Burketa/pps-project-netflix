@@ -15,18 +15,21 @@ public class Trailer implements Serializable {
     private String description;
     private int launchYear;
     private boolean isFavorite;
+    private String trailerURL;
 
     public Trailer() {
 
     }
 
-    public Trailer(int category, Image thumbnail, String title, String description, int launchYear, boolean isFavorite) {
+    public Trailer(int category, Image thumbnail, String title, String description,
+                   int launchYear, boolean isFavorite, String trailerURL) {
         this.category = category;
         this.thumbnail = thumbnail;
         this.title = title;
         this.description = description;
         this.launchYear = launchYear;
         this.isFavorite = isFavorite;
+        this.trailerURL = trailerURL;
     }
 
     public int getCategory() {
@@ -76,4 +79,13 @@ public class Trailer implements Serializable {
     public void setFavorite(boolean favorite) {
         isFavorite = favorite;
     }
+
+    public String getTrailerURL() {
+        return trailerURL;
+    }
+
+    public void setTrailerURL(String trailerURL) {
+        this.trailerURL = trailerURL;
+    }
+
 }

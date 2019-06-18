@@ -2,6 +2,8 @@ package com.teamfive.trailerflix.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -36,5 +38,21 @@ public class PlayerActivity extends AppCompatActivity {
         title.setText(trailer.getTitle());
         favorite = findViewById(R.id.cb_favorite);
         feedback = findViewById(R.id.rg_feedback);
+
+        WebView webView = findViewById(R.id.webview);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        String frameVideo = "<iframe " +
+                            "width=\"100%\"" +
+                            "height=\"100%\"" +
+                            "src=\"" + trailer.getTrailerURL() + "\"" +
+                            "frameBorder=\"0\"" +
+                            "</iframe>";
+
+        webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.loadData(frameVideo, "text/html", "utf-8");
     }
 }

@@ -44,10 +44,12 @@ public class AcaoFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewListaContatos);
 
         //Popular lista de contatos estatica
-        trailerList.add(new Trailer(0, null, "Acao 1", "Uau 1", 2000, true));
-        trailerList.add(new Trailer(0, null, "Acao 2", "Uau 2", 2001, false));
-        trailerList.add(new Trailer(0, null, "Acao 3", "Uau 3", 2002, true));
-        trailerList.add(new Trailer(0, null, "Acao 4", "Uau 4", 2003, false));
+        trailerList.add(new Trailer(0, null, "Missao Impossivel", "Cheio de ação !", 2000, true, "https://www.youtube.com/embed/IHXDxNfZVKk"));
+        trailerList.add(new Trailer(0, null, "Vinganca a Sangue Frio", "Uau 2", 2001, false,
+                "https://www.youtube" +
+                ".com/embed/_Q5Z3hxV2eg"));
+        trailerList.add(new Trailer(0, null, "Acao 3", "Uau 3", 2002, true, "https://www.youtube.com/embed/IHXDxNfZVKk"));
+        trailerList.add(new Trailer(0, null, "Acao 4", "Uau 4", 2003, false, "https://www.youtube.com/embed/IHXDxNfZVKk"));
 
         //configurar adapter
         adapter = new TrailerCardAdapter(trailerList);

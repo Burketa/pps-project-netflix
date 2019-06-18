@@ -15,25 +15,40 @@ public class Trailer implements Serializable {
     private String description;
     private int launchYear;
     private boolean isFavorite;
-    private String trailerURL;
+    private boolean feedback;
+    private String trailerYoutubeId;
+
+    private String urlVideo = "https://www.youtube.com/embed/";
+    private String ulrThumb = "https://img.youtube.com/vi/";
 
     public Trailer() {
 
     }
 
     public Trailer(int category, Image thumbnail, String title, String description,
-                   int launchYear, boolean isFavorite, String trailerURL) {
+                   int launchYear, boolean isFavorite, String trailerYoutubeId) {
         this.category = category;
         this.thumbnail = thumbnail;
         this.title = title;
         this.description = description;
         this.launchYear = launchYear;
         this.isFavorite = isFavorite;
-        this.trailerURL = trailerURL;
+        this.trailerYoutubeId = trailerYoutubeId;
+        this.urlVideo += trailerYoutubeId;
+        this.ulrThumb += trailerYoutubeId + "/default.jpg";
     }
 
     public int getCategory() {
         return category;
+    }
+
+    public String getCategoryString() {
+        switch (category)
+        {
+            case 0: return "Ação";
+            case 1: return "Comédia";
+            default: return "";
+        }
     }
 
     public void setCategory(int category) {
@@ -80,12 +95,36 @@ public class Trailer implements Serializable {
         isFavorite = favorite;
     }
 
-    public String getTrailerURL() {
-        return trailerURL;
+    public String getTrailerYoutubeId() {
+        return trailerYoutubeId;
     }
 
-    public void setTrailerURL(String trailerURL) {
-        this.trailerURL = trailerURL;
+    public void setTrailerYoutubeId(String trailerYoutubeId) {
+        this.trailerYoutubeId = trailerYoutubeId;
+    }
+
+    public String getUrlVideo() {
+        return urlVideo;
+    }
+
+    public void setUrlVideo(String urlVideo) {
+        this.urlVideo = urlVideo;
+    }
+
+    public String getUlrThumb() {
+        return ulrThumb;
+    }
+
+    public void setUlrThumb(String ulrThumb) {
+        this.ulrThumb = ulrThumb;
+    }
+
+    public boolean isFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(boolean feedback) {
+        this.feedback = feedback;
     }
 
 }

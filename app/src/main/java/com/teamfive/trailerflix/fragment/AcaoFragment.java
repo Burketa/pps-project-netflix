@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import com.teamfive.trailerflix.R;
 import com.teamfive.trailerflix.activities.PlayerActivity;
 import com.teamfive.trailerflix.adapter.TrailerAdapter;
-import com.teamfive.trailerflix.adapter.TrailerCardAdapter;
 import com.teamfive.trailerflix.helper.RecyclerItemClickListener;
 import com.teamfive.trailerflix.model.Trailer;
 
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 public class AcaoFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private TrailerCardAdapter adapter;
+    private TrailerAdapter adapter;
     private ArrayList<Trailer> trailerList = new ArrayList<>();
 
     public AcaoFragment() {
@@ -44,15 +43,10 @@ public class AcaoFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewListaContatos);
 
         //Popular lista de contatos estatica
-        trailerList.add(new Trailer(0, null, "Missao Impossivel", "Cheio de ação !", 2000, true, "https://www.youtube.com/embed/IHXDxNfZVKk"));
-        trailerList.add(new Trailer(0, null, "Vinganca a Sangue Frio", "Uau 2", 2001, false,
-                "https://www.youtube" +
-                ".com/embed/_Q5Z3hxV2eg"));
-        trailerList.add(new Trailer(0, null, "Acao 3", "Uau 3", 2002, true, "https://www.youtube.com/embed/IHXDxNfZVKk"));
-        trailerList.add(new Trailer(0, null, "Acao 4", "Uau 4", 2003, false, "https://www.youtube.com/embed/IHXDxNfZVKk"));
+        populaListaTrailers();
 
         //configurar adapter
-        adapter = new TrailerCardAdapter(trailerList);
+        adapter = new TrailerAdapter(trailerList);
 
         //configurar recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -70,7 +64,7 @@ public class AcaoFragment extends Fragment {
                                 Trailer trailer = trailerList.get(position);
                                 Intent i = new Intent(getActivity(), PlayerActivity.class);
                                 i.putExtra("trailer", trailer);
-                                startActivity(i);
+                                startActivityForResult(i, 0);
 
                             }
 
@@ -88,5 +82,15 @@ public class AcaoFragment extends Fragment {
         );
 
         return view;
+    }
+
+    private void populaListaTrailers() {
+        trailerList.add(new Trailer(0, null, "Mulher Maravilha", "Filmão !", 2000, true, "bldAkEUANWA"));
+        trailerList.add(new Trailer(0, null, "Vingadores: Ultiamto", "Uau 2", 2001, false, "g6ng8iy-l0U"));
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

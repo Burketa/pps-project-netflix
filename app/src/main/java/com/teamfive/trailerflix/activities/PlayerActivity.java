@@ -27,7 +27,7 @@ public class PlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_activity);
+        setContentView(R.layout.activity_player);
 
         Bundle b = getIntent().getExtras();
         
@@ -39,6 +39,10 @@ public class PlayerActivity extends AppCompatActivity {
         favorite = findViewById(R.id.cb_favorite);
         feedback = findViewById(R.id.rg_feedback);
 
+        favorite.setChecked(trailer.isFavorite());
+
+        //TODO:adicionar o estado do player para refletir na avaliação.
+
         WebView webView = findViewById(R.id.webview);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -46,7 +50,7 @@ public class PlayerActivity extends AppCompatActivity {
         String frameVideo = "<iframe " +
                             "width=\"100%\"" +
                             "height=\"100%\"" +
-                            "src=\"" + trailer.getTrailerURL() + "\"" +
+                            "src=\"" + trailer.getUrlVideo() + "\"" +
                             "frameBorder=\"0\"" +
                             "</iframe>";
 

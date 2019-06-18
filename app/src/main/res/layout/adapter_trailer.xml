@@ -1,39 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="16dp">
 
-    <TextView
-        android:id="@+id/trailer_title"
+
+    <ImageView
+        android:id="@+id/trailer_thumbnail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:srcCompat="@android:drawable/btn_star_big_off" />
+
+    <LinearLayout
+        android:layout_width="217dp"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/trailer_title"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="Titulo do filme"
+            android:textColor="@android:color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/trailer_description"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:gravity="center"
+            android:text="Descrição do filme"
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/trailer_favorite"
+        style="?android:attr/starStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/trailer_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="Upper"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/white"
-        android:textStyle="italic" />
-
-    <TextView
-        android:id="@+id/trailer_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="True"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/white" />
+        android:gravity="right|center_vertical"
+        android:paddingTop="82dp"
+        app:theme="@style/CheckboxStyle" />
 
 </LinearLayout>

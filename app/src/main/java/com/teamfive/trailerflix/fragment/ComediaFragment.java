@@ -44,14 +44,10 @@ public class ComediaFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewListaContatos);
 
         //Popular lista de contatos estatica
-        trailerList.add(new Trailer(1, null, "Comedia 1", "Engraçado 1", 2000, true, "https://www" +
-                ".youtube.com/embed/IHXDxNfZVKk"));
-        trailerList.add(new Trailer(1, null, "Comedia 2", "Engraçado 2", 2001, false, "https://www.youtube.com/embed/IHXDxNfZVKk"));
-        trailerList.add(new Trailer(1, null, "Comedia 3", "Engraçado 3", 2002, true, "https://www.youtube.com/embed/IHXDxNfZVKk"));
-        trailerList.add(new Trailer(1, null, "Comedia 4", "Engraçado 4", 2003, false, "https://www.youtube.com/embed/IHXDxNfZVKk"));
+        popularListaTrailers();
 
         //configurar adapter
-        adapter = new TrailerAdapter(trailerList, getActivity());
+        adapter = new TrailerAdapter(trailerList);
 
         //configurar recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -87,6 +83,12 @@ public class ComediaFragment extends Fragment {
         );
 
         return view;
+    }
+
+    private void popularListaTrailers() {
+        trailerList.add(new Trailer(1, null, "Toy Story 4", "Engraçado 1", 2001, false, "wmiIUN-7qhE"));
+        trailerList.add(new Trailer(1, null, "Alladin", "Engraçado 2", 2002, true, "PRyOvcOhtms"));
+
     }
 
 }

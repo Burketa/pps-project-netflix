@@ -1,11 +1,11 @@
 package com.teamfive.trailerflix.adapter;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.teamfive.trailerflix.R;
@@ -13,59 +13,36 @@ import com.teamfive.trailerflix.model.Trailer;
 
 import java.util.List;
 
-public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHolder> {
+public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHolder>{
+    private List<Trailer> trailers;
 
-    List<Trailer> trailers;
-    Context context;
-
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView trailer;
-        TextView trailer_category;
-        TextView trailer_description;
-        //TextView trailer_year;
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            trailer = itemView.findViewById(R.id.trailer_title);
-            trailer_description = itemView.findViewById(R.id.trailer_description);
-            trailer_category = itemView.findViewById(R.id.trailer_category);
-        }
-    }
-
-    public TrailerAdapter(List<Trailer> trailers, Context context) {
-        this.trailers = trailers;
-        this.context = context;
+    public TrailerAdapter(List<Trailer> listaTrailers) {
+        this.trailers = listaTrailers;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View item_list = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.adapter_trailer, viewGroup, false);
-        return new MyViewHolder(item_list);
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View itemLista = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.adapter_trailer, parent, false);
+
+        return new MyViewHolder(itemLista);
+
     }
 
-    //TODO: Aqui é onde eu faria pra marcar os ja selecionados no outro projeto.
-    //veria qual da lista foi passado como selecionada ao criar. (Colocar um parametro na criacao)
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        Trailer trailer = trailers.get(i);
+    public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        myViewHolder.trailer.setText(trailer.getTitle());
-        myViewHolder.trailer_description.setText(trailer.getDescription());
+        Trailer trailer = trailers.get( position );
 
-        switch (trailer.getCategory())
-        {
-            case Trailer.ACAO:
-                myViewHolder.trailer_category.setText("Acao");
-                break;
+        holder.trailerTitle.setText( trailer.getTitle() );
+        holder.trailerDescription.setText( trailer.getDescription() );
+        holder.trailerThumbnail.setImageResource( R.drawable.ic_arrow_white_24dp );
+        if(trailer.isFavorite())
+            holder.trailerFavorite.setChecked(true);
+        else
+            holder.trailerFavorite.setChecked(false);
 
-            case Trailer.COMEDIA:
-                myViewHolder.trailer_category.setText("Comedia");
-                break;
-
-            default:
-                    break;
-        }
     }
 
     @Override
@@ -73,5 +50,21 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
         return trailers.size();
     }
 
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView trailerTitle;
+        private TextView trailerDescription;
+        private ImageView trailerThumbnail;
+        private CheckBox trailerFavorite;
+
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            trailerTitle = itemView.findViewById(R.id.trailer_title);
+            trailerDescription = itemView.findViewById(R.id.trailer_description);
+            trailerThumbnail = itemView.findViewById(R.id.trailer_thumbnail);
+            trailerFavorite = itemView.findViewById(R.id.trailer_favorite);
+        }
+    }
 
 }

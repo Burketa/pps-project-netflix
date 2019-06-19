@@ -13,13 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.PlayerActivity" />
+        <activity
+            android:name=".activities.PlayerActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ConfigActivity"
-            android:parentActivityName=".activities.MainActivity" />
-        <activity android:name=".activities.CadastroAcitivity" />
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".activities.LoginActivity">
+            android:configChanges="orientation"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CadastroAcitivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

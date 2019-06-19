@@ -17,6 +17,7 @@ import java.util.List;
 
 public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHolder>{
     private List<Trailer> trailers;
+    private List<Trailer> trailersList;
     private Context context;
 
     public TrailerAdapter(List<Trailer> listaTrailers, Context context) {
@@ -61,6 +62,40 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
     public int getItemCount() {
         return trailers.size();
     }
+
+    /*public Filter getFilter() {
+        return new Filter() {
+
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                final FilterResults oReturn = new FilterResults();
+                final List<Trailer> results = new ArrayList<>();
+                if (trailersList == null)
+                    trailersList = trailers;
+                if(constraint == null || constraint.length() == 0){
+                    oReturn.values = trailersList;
+                } else {
+                    if (trailersList != null && !trailersList.isEmpty()) {
+                        for (final Trailer trailer : trailersList) {
+                            if (trailer.getTitle().contains(constraint))
+                                results.add(trailer);
+                        }
+                    }
+                    oReturn.values = results;
+                }
+                return oReturn;
+            }
+
+            @SuppressWarnings("unchecked")
+            @Override
+            protected void publishResults(CharSequence constraint,
+                                          FilterResults results) {
+                trailers = (ArrayList<Trailer>) results.values;
+                notifyDataSetChanged();
+                //listener.recebeListaFiltro(listaContratos.isEmpty());
+            }
+        };
+    }*/
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 

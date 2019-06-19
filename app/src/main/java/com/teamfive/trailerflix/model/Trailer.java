@@ -1,7 +1,5 @@
 package com.teamfive.trailerflix.model;
 
-import android.media.Image;
-
 import java.io.Serializable;
 
 public class Trailer implements Serializable {

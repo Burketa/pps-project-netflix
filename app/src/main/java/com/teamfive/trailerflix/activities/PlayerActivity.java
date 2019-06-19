@@ -1,11 +1,7 @@
 package com.teamfive.trailerflix.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -55,7 +51,7 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
 
         //TODO: pensar em um jeito de deixar legal pra dar um play no video automatico
-        //youTubePlayer.setFullscreen(true);
+        youTubePlayer.setFullscreen(true);
         //youTubePlayer.setShowFullscreenButton(false);
         youTubePlayer.loadVideo( trailer.getTrailerYoutubeId() );
     }

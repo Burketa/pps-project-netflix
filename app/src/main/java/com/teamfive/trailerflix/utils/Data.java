@@ -2,7 +2,6 @@ package com.teamfive.trailerflix.utils;
 
 import com.teamfive.trailerflix.model.Trailer;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

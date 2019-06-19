@@ -10,12 +10,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.teamfive.trailerflix.R;
-import com.teamfive.trailerflix.fragment.ActionFragment;
-import com.teamfive.trailerflix.fragment.ComedyFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.teamfive.trailerflix.R;
+import com.teamfive.trailerflix.fragment.ActionFragment;
+import com.teamfive.trailerflix.fragment.ComedyFragment;
 import com.teamfive.trailerflix.fragment.FavoritesFragment;
 
 public class MainActivity extends AppCompatActivity {

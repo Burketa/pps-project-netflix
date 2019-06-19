@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.teamfive.trailerflix.activities.ConfigActivity">tools:context="com.whatsapp.cursoandroid.jamiltondamasceno.whatsapp.activity.ConfiguracoesActivity">
+    tools:context="com.teamfive.trailerflix.activities.ConfigActivity">
 
     <include
         android:id="@+id/include"

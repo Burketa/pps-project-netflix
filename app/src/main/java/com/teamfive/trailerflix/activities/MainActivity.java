@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
                         .create()
         );
 
-        ViewPager viewPager = findViewById(R.id.viewPager);
+        final ViewPager viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
-
+//TODO: Evento de mudar de tela refresh no recycler view.
         SmartTabLayout viewPagerTab = findViewById(R.id.viewPagerTab);
         viewPagerTab.setViewPager(viewPager);
     }

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.teamfive.trailerflix.R;
 import com.teamfive.trailerflix.activities.PlayerActivity;
@@ -45,10 +46,46 @@ public class ActionFragment extends Fragment {
 
         //Popular lista de trailers estatica
         if(trailerList.size() == 0)
-            populaListaTrailers();
+            popularListaTrailers();
 
         //configurar adapter
         adapter = new TrailerAdapter(trailerList, getContext());
+        adapter.setMyListener(new TrailerAdapter.MyListener() {
+            @Override
+            public void onClick(int position) {
+                Trailer trailer = trailerList.get(position);
+
+                Intent i = new Intent(getActivity(), PlayerActivity.class);
+                i.putExtra("trailer", trailer);
+                startActivityForResult(i, 0);
+            }
+
+            @Override
+            public void onFavoriteClick(int position) {
+                Trailer trailer = trailerList.get(position);
+
+                if(!trailer.isFavorite()) {
+                    Toast.makeText(getContext(), trailer.getTitle() + " Favoritado",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getContext(), trailer.getTitle() + " Desfavoritado",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                trailer.setFavorite(!trailer.isFavorite());
+
+                Data.trailerList.set(Data.trailerList.indexOf(trailer), trailer);
+                Data.updateFavorites();
+                popularListaTrailers();
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFeedbackClick(int position) {
+
+            }
+        });
 
         //configurar recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -56,13 +93,14 @@ public class ActionFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
-        recyclerView.addOnItemTouchListener(
+        /*recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         getActivity(),
                         recyclerView,
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+
                                 Trailer trailer = trailerList.get(position);
                                 Intent i = new Intent(getActivity(), PlayerActivity.class);
                                 i.putExtra("trailer", trailer);
@@ -81,12 +119,14 @@ public class ActionFragment extends Fragment {
                             }
                         }
                 )
-        );
+        );*/
 
         return view;
     }
 
-    private void populaListaTrailers() {
+    private void popularListaTrailers() {
+        trailerList.clear();
+
         for(Trailer t : Data.trailerList)
         {
             if(t.getCategory() == 0)

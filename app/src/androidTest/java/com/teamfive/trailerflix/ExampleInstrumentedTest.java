@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.whatsappclone", appContext.getPackageName());
+        assertEquals("com.teamfive.trailerflix", appContext.getPackageName());
     }
 }

@@ -35,19 +35,18 @@
             android:layout_height="54dp"
             android:gravity="center"
             android:text="Descrição do filme"
-            android:textColor="@android:color/white"
+            android:textColor="@color/hintColor"
             android:textSize="14dp" />
 
     </LinearLayout>
 
     <CheckBox
         android:id="@+id/trailer_favorite"
-        style="?android:attr/starStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="right|center_vertical"
         android:paddingTop="82dp"
-        app:theme="@style/CheckboxStyle" />
+        android:button="@drawable/star"/>
 
 
 </LinearLayout>

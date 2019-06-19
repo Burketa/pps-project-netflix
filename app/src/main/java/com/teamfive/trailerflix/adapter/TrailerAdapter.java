@@ -15,10 +15,24 @@ import com.teamfive.trailerflix.model.Trailer;
 
 import java.util.List;
 
-public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHolder>{
+public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHolder> {
     private List<Trailer> trailers;
     private List<Trailer> trailersList;
     private Context context;
+    private MyListener listener;
+
+    public interface MyListener {
+        void onClick(int position);
+
+        void onFavoriteClick(int position);
+
+        void onFeedbackClick(int position);
+    }
+
+    public void setMyListener(MyListener listener)
+    {
+        this.listener = listener;
+    }
 
     public TrailerAdapter(List<Trailer> listaTrailers, Context context) {
         this.trailers = listaTrailers;
@@ -38,23 +52,24 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        Trailer trailer = trailers.get( position );
+        Trailer trailer = trailers.get(position);
 
-        holder.trailerTitle.setText( trailer.getTitle() );
-        holder.trailerDescription.setText( trailer.getDescription() );
-        //holder.trailerThumbnail.setImageResource( R.drawable.ic_arrow_white_24dp );
+        holder.trailerTitle.setText(trailer.getTitle());
+        holder.trailerDescription.setText(trailer.getDescription());
 
         Glide
                 .with(context)
-                .load("https://img.youtube.com/vi/"+ trailer.getTrailerYoutubeId() +"/0.jpg")
+                .load("https://img.youtube.com/vi/" + trailer.getTrailerYoutubeId() + "/0.jpg")
                 .centerCrop()
                 .placeholder(R.drawable.ic_editar_vermelho_24dp)
                 .into(holder.trailerThumbnail);
 
-        if(trailer.isFavorite())
+        if (trailer.isFavorite())
             holder.trailerFavorite.setChecked(true);
         else
             holder.trailerFavorite.setChecked(false);
+
+        setListeners(holder, listener, position);
 
     }
 
@@ -112,6 +127,35 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
             trailerThumbnail = itemView.findViewById(R.id.trailer_thumbnail);
             trailerFavorite = itemView.findViewById(R.id.trailer_favorite);
         }
+    }
+
+    public void setListeners(MyViewHolder holder, final MyListener listener, final int position) {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onClick(position);
+            }
+        });
+
+        holder.trailerFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onFavoriteClick(position);
+            }
+
+        });
+
+        holder.trailerDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onFeedbackClick(position);
+            }
+
+        });
+
     }
 
 }

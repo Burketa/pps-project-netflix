@@ -6,13 +6,14 @@
         android:icon="@drawable/ic_search_white_24dp"
         android:title="Pesquisar"
         app:showAsAction="always"></item>
-
+    <!--
     <item
         android:id="@+id/menuConfiguracoes"
         android:title="Configurações"
         app:showAsAction="never"></item>
-
+    -->
     <item
         android:title="Sair"
+        android:id="@+id/sair"
         app:showAsAction="never"></item>
 </menu>

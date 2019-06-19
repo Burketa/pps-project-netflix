@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.teamfive.trailerflix.R;
 import com.teamfive.trailerflix.fragment.ActionFragment;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
-                        //.add("Favoritos", FavoritesFragment.class)
+                        .add("Favoritos", FavoritesFragment.class)
                         .add("Açâo", ActionFragment.class)
                         .add("Comédia", ComedyFragment.class)
                         .create()
@@ -58,8 +59,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.menuConfiguracoes:
-                abrirConfiguracoes();
+            //case R.id.menuConfiguracoes:
+                //abrirConfiguracoes();
+                //break;
+            case R.id.sair:
+                Toast.makeText(this, "Saindo", Toast.LENGTH_SHORT).show();
                 break;
         }
 

@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Trailerflix</string>
+
+    <string name="youtube_key">AIzaSyDvOolY9l7hrpM72ZeYgdWW7ftm2Zu0WRA</string>
+
     <string name="facebook_app_id">374807480056453</string>
     <string name="fb_login_protocol_scheme">fb374807480056453</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_chat">ChatActivity</string>
 </resources>

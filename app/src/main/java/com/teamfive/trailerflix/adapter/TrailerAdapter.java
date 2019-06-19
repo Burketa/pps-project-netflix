@@ -1,5 +1,6 @@
 package com.teamfive.trailerflix.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.teamfive.trailerflix.R;
 import com.teamfive.trailerflix.model.Trailer;
 
@@ -15,9 +17,11 @@ import java.util.List;
 
 public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHolder>{
     private List<Trailer> trailers;
+    private Context context;
 
-    public TrailerAdapter(List<Trailer> listaTrailers) {
+    public TrailerAdapter(List<Trailer> listaTrailers, Context context) {
         this.trailers = listaTrailers;
+        this.context = context;
     }
 
     @Override
@@ -37,7 +41,15 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
 
         holder.trailerTitle.setText( trailer.getTitle() );
         holder.trailerDescription.setText( trailer.getDescription() );
-        holder.trailerThumbnail.setImageResource( R.drawable.ic_arrow_white_24dp );
+        //holder.trailerThumbnail.setImageResource( R.drawable.ic_arrow_white_24dp );
+
+        Glide
+                .with(context)
+                .load("https://img.youtube.com/vi/"+ trailer.getTrailerYoutubeId() +"/0.jpg")
+                .centerCrop()
+                .placeholder(R.drawable.ic_editar_vermelho_24dp)
+                .into(holder.trailerThumbnail);
+
         if(trailer.isFavorite())
             holder.trailerFavorite.setChecked(true);
         else

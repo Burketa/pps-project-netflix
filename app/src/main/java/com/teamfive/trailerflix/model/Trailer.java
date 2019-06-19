@@ -9,33 +9,27 @@ public class Trailer implements Serializable {
     public static final int ACAO = 0;
     public static final int COMEDIA = 1;
 
-    private int category;
-    private Image thumbnail;
+    private String trailerYoutubeId;
     private String title;
+    private int category;
     private String description;
     private int launchYear;
     private boolean isFavorite;
     private boolean feedback;
-    private String trailerYoutubeId;
-
-    private String urlVideo = "https://www.youtube.com/embed/";
-    private String ulrThumb = "https://img.youtube.com/vi/";
 
     public Trailer() {
 
     }
 
-    public Trailer(int category, Image thumbnail, String title, String description,
-                   int launchYear, boolean isFavorite, String trailerYoutubeId) {
-        this.category = category;
-        this.thumbnail = thumbnail;
+    public Trailer(int category, String trailerYoutubeId, String title, String description,
+                   int launchYear, boolean isFavorite, boolean feedback) {
+        this.trailerYoutubeId = trailerYoutubeId;
         this.title = title;
+        this.category = category;
         this.description = description;
         this.launchYear = launchYear;
         this.isFavorite = isFavorite;
-        this.trailerYoutubeId = trailerYoutubeId;
-        this.urlVideo += trailerYoutubeId;
-        this.ulrThumb += trailerYoutubeId + "/default.jpg";
+        this.feedback = feedback;
     }
 
     public int getCategory() {
@@ -53,14 +47,6 @@ public class Trailer implements Serializable {
 
     public void setCategory(int category) {
         this.category = category;
-    }
-
-    public Image getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(Image thumbnail) {
-        this.thumbnail = thumbnail;
     }
 
     public String getTitle() {
@@ -101,22 +87,6 @@ public class Trailer implements Serializable {
 
     public void setTrailerYoutubeId(String trailerYoutubeId) {
         this.trailerYoutubeId = trailerYoutubeId;
-    }
-
-    public String getUrlVideo() {
-        return urlVideo;
-    }
-
-    public void setUrlVideo(String urlVideo) {
-        this.urlVideo = urlVideo;
-    }
-
-    public String getUlrThumb() {
-        return ulrThumb;
-    }
-
-    public void setUlrThumb(String ulrThumb) {
-        this.ulrThumb = ulrThumb;
     }
 
     public boolean isFeedback() {

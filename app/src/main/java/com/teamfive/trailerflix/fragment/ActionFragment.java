@@ -16,19 +16,20 @@ import com.teamfive.trailerflix.activities.PlayerActivity;
 import com.teamfive.trailerflix.adapter.TrailerAdapter;
 import com.teamfive.trailerflix.helper.RecyclerItemClickListener;
 import com.teamfive.trailerflix.model.Trailer;
+import com.teamfive.trailerflix.utils.Data;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AcaoFragment extends Fragment {
+public class ActionFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private TrailerAdapter adapter;
     private ArrayList<Trailer> trailerList = new ArrayList<>();
 
-    public AcaoFragment() {
+    public ActionFragment() {
         // Required empty public constructor
     }
 
@@ -37,16 +38,16 @@ public class AcaoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_comedia, container, false);
+        View view = inflater.inflate(R.layout.fragment_comedy, container, false);
 
         //Configurações iniciais
-        recyclerView = view.findViewById(R.id.recyclerViewListaContatos);
+        recyclerView = view.findViewById(R.id.recycler_view);
 
-        //Popular lista de contatos estatica
+        //Popular lista de trailers estatica
         populaListaTrailers();
 
         //configurar adapter
-        adapter = new TrailerAdapter(trailerList);
+        adapter = new TrailerAdapter(trailerList, getContext());
 
         //configurar recyclerview
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -85,8 +86,11 @@ public class AcaoFragment extends Fragment {
     }
 
     private void populaListaTrailers() {
-        trailerList.add(new Trailer(0, null, "Mulher Maravilha", "Filmão !", 2000, true, "bldAkEUANWA"));
-        trailerList.add(new Trailer(0, null, "Vingadores: Ultiamto", "Uau 2", 2001, false, "g6ng8iy-l0U"));
+        for(Trailer t : Data.trailerList)
+        {
+            if(t.getCategory() == 0)
+                trailerList.add(t);
+        }
     }
 
     @Override

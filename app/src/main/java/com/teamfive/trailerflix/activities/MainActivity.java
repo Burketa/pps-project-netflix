@@ -10,11 +10,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.teamfive.trailerflix.R;
-import com.teamfive.trailerflix.fragment.AcaoFragment;
-import com.teamfive.trailerflix.fragment.ComediaFragment;
+import com.teamfive.trailerflix.fragment.ActionFragment;
+import com.teamfive.trailerflix.fragment.ComedyFragment;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.teamfive.trailerflix.fragment.FavoritesFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
-                .add("Açâo", AcaoFragment.class)
-                .add("Comédia", ComediaFragment.class)
-                .create()
+                        //.add("Favoritos", FavoritesFragment.class)
+                        .add("Açâo", ActionFragment.class)
+                        .add("Comédia", ComedyFragment.class)
+                        .create()
         );
 
         ViewPager viewPager = findViewById(R.id.viewPager);
@@ -55,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch ( item.getItemId() ){
-            case R.id.menuConfiguracoes :
+        switch (item.getItemId()) {
+            case R.id.menuConfiguracoes:
                 abrirConfiguracoes();
                 break;
         }
@@ -64,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void abrirConfiguracoes(){
+    public void abrirConfiguracoes() {
         Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
-        startActivity( intent );
+        startActivity(intent);
     }
 }

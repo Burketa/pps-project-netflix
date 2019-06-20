@@ -1,21 +1,24 @@
 package com.teamfive.trailerflix.model;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 public class Trailer implements Serializable {
 
-    public static final int ACTION = 0;
-    public static final int COMEDY = 1;
+    public static final int ACTION = 1;
+    public static final int COMEDY = 2;
 
     private String trailerYoutubeId;
     private String trailerIMDBId;
 
-    private String Title;
+    private String title;
     private int category;
     private String description;
     private int launchYear;
     private boolean isFavorite;
     private boolean feedback;
+    private String json;
 
     public Trailer() {
 
@@ -29,6 +32,23 @@ public class Trailer implements Serializable {
         this.feedback = feedback;
     }
 
+    public Trailer(int category, String trailerIMDBId, String trailerYoutubeId,  boolean isFavorite,
+                   boolean feedback) {
+        this.category = category;
+        this.trailerIMDBId = trailerIMDBId;
+        this.trailerYoutubeId = trailerYoutubeId;
+        this.isFavorite = isFavorite;
+        this.feedback = feedback;
+    }
+
+    public String getJson() {
+        return json;
+    }
+
+    public void setJson(String json) {
+        this.json = json;
+    }
+
     public int getCategory() {
         return category;
     }
@@ -36,8 +56,8 @@ public class Trailer implements Serializable {
     public String getCategoryString() {
         switch (category)
         {
-            case 0: return "Ação";
-            case 1: return "Comédia";
+            case 1: return "Ação";
+            case 2: return "Comédia";
             default: return "";
         }
     }
@@ -47,11 +67,11 @@ public class Trailer implements Serializable {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        this.Title = title;
+        this.title = title;
     }
 
     public String getDescription() {

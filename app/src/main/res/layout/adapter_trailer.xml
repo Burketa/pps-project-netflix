@@ -36,7 +36,8 @@
             android:gravity="center"
             android:text="Descrição do filme"
             android:textColor="@color/hintColor"
-            android:textSize="14dp" />
+            android:textSize="16dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

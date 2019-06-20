@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         //Intent intent = new Intent(getBaseContext(), MainActivity.class);
         //startActivity(intent);
         Data data = new Data();
-        //data.startTask(getBaseContext());
-        data.getMovieData();
+        data.startTask(getBaseContext());
+        //data.getMovieData();
     }
 }

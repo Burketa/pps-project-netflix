@@ -129,7 +129,7 @@ public class ActionFragment extends Fragment {
 
         for(Trailer t : Data.trailerList)
         {
-            if(t.getCategory() == 0)
+            if(t.getCategory() == Trailer.ACTION)
                 trailerList.add(t);
         }
     }

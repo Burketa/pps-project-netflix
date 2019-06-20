@@ -36,31 +36,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Data{
 
     private Context c;
-    private int i = 0;
 
     public static List<Trailer> trailerList = Arrays.asList(
             new Trailer("tt0451279", "bldAkEUANWA", true, false),
             new Trailer("tt4154796", "g6ng8iy-l0U", false, true),
-
             new Trailer("tt1979376", "wmiIUN-7qhE", false, false),
             new Trailer("tt6139732", "PRyOvcOhtms", true, true),
-            new Trailer("tt9853264", "qk7AkLgXK4k", false,
-                    true),
-            new Trailer("tt1298644", "QxsWq53cV80",false,
-                    false),
-            new Trailer("tt9214310", "FWFMr44Rmjw",true,
-                    false),
+            new Trailer("tt9853264", "qk7AkLgXK4k", false,true),
+            new Trailer("tt1298644", "QxsWq53cV80",false,false),
+            new Trailer(Trailer.COMEDY,"tt9214310", "FWFMr44Rmjw",true,false),
             new Trailer("tt2139881", "FQFPrMNcDhA",false, false),
             new Trailer("tt8211942", "AVdjEY4BMxs", false, false),
-            new Trailer("tt5814534", "KarvuJWMLjI", false,
-                    false),
+            new Trailer(Trailer.COMEDY,"tt5814534", "KarvuJWMLjI", false,false),
             new Trailer("tt4139588", "cdAZYIgdh6M",true, false)
-
     );
 
     public static List<Trailer> favoriteList = new ArrayList<>();
-    public static List<Trailer> jsontrailer = new ArrayList<>();
-    public static String json = "";
+    public static List<Trailer> imdbList = new ArrayList<>();
+    public static List<String> jsonList = new ArrayList<>();
 
     public static void updateFavorites()
     {
@@ -72,8 +65,6 @@ public class Data{
                 favoriteList.add(t);
         }
     }
-
-
 
     public void startTask(Context c) {
         this.c = c;
@@ -114,6 +105,7 @@ public class Data{
     }
 
     public String getResponseFromURL(String url_string) {
+
         String string = url_string;
         HttpURLConnection connection = null;
         InputStream inputStream = null;
@@ -140,26 +132,46 @@ public class Data{
             while ((line = bufferedReader.readLine()) != null) {
                 api_raw_result.append(line);
             }
-
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //api_raw_result.insert(api_raw_result.length() - 1,
+         //       ",\"id\":\"" + trailerList.get(i).getTrailerIMDBId() +
+         //       "\"");
+        //if(i < trailerList.size() - 1)
+         //   i++;
+        //api_raw_result.append(",\"id\":\"" + i + "\"}");
+        jsonList.add(api_raw_result.toString());
         return api_raw_result.toString();
     }
 
     private void setTrailerData(String result) {
         try {
             JSONObject obj = new JSONObject(result);
-            trailerList.get(i).setTitle(obj.getString("Title"));
+            String movieid = obj.getString("imdbID");
+            for (Trailer t : trailerList) {
+                if(t.getTrailerIMDBId().equals(movieid)) {
+                    Trailer info = trailerList.get(trailerList.indexOf(t));
+                    info.setJson(result);
+                    info.setTitle(obj.getString("Title"));
+                    info.setDescription(obj.getString("imdbRating"));
+                    if(info.getCategory() == 0) {
+                        if (obj.getString("Genre").contains("Action"))
+                            info.setCategory(Trailer.ACTION);
+                        else if (obj.getString("Genre").contains("Comedy"))
+                            info.setCategory(Trailer.COMEDY);
+                    }
+                    break;
+                }
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public void getMovieData()
+    /*public void getMovieData()
     {
         for(final Trailer t : trailerList) {
             Retrofit retrofit = new Retrofit.Builder()
@@ -192,5 +204,5 @@ public class Data{
                 }
             });
         }
-    }
+    }*/
 }

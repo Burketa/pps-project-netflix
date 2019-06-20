@@ -147,14 +147,14 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
 
         });
 
-        holder.trailerDescription.setOnClickListener(new View.OnClickListener() {
+        /*holder.trailerDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null)
                     listener.onFeedbackClick(position);
             }
 
-        });
+        });*/
 
     }
 

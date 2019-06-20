@@ -129,7 +129,7 @@ public class ComedyFragment extends Fragment {
 
         for(Trailer t : Data.trailerList)
         {
-            if(t.getCategory() == 1)
+            if(t.getCategory() == Trailer.COMEDY)
                 trailerList.add(t);
         }
     }

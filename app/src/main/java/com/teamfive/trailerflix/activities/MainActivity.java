@@ -60,22 +60,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-            //case R.id.menuConfiguracoes:
-                //abrirConfiguracoes();
-                //break;
-            case R.id.sair:
-                sair();
-                break;
-        }
+        if (item.getItemId() == R.id.sair)
+            sair();
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void abrirConfiguracoes() {
-        Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
-        startActivity(intent);
-    }
     public void sair()
     {
         Intent i = new Intent(getBaseContext(), LoginActivity.class);

@@ -9,6 +9,10 @@ public class Trailer implements Serializable {
     public static final int ACTION = 1;
     public static final int COMEDY = 2;
 
+    public static final int UNRATED = 0;
+    public static final int POSITIVE = 1;
+    public static final int NEGATVIE = 2;
+
     private String trailerYoutubeId;
     private String trailerIMDBId;
 
@@ -106,7 +110,7 @@ public class Trailer implements Serializable {
         this.trailerYoutubeId = trailerYoutubeId;
     }
 
-    public boolean isFeedback() {
+    public boolean getFeedback() {
         return feedback;
     }
 

@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -26,7 +28,9 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
 
         void onFavoriteClick(int position);
 
-        void onFeedbackClick(int position);
+        void onFeedbackPositiveClick(View view, int position);
+
+        void onFeedbackNegativeClick(View view, int position);
     }
 
     public void setMyListener(MyListener listener)
@@ -68,6 +72,11 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
             holder.trailerFavorite.setChecked(true);
         else
             holder.trailerFavorite.setChecked(false);
+
+        if (trailer.getFeedback())
+            holder.trailerFeedbackPositive.setChecked(true);
+        else
+            holder.trailerFeedbackNegative.setChecked(true);
 
         setListeners(holder, listener, position);
 
@@ -118,13 +127,21 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
         private TextView trailerDescription;
         private ImageView trailerThumbnail;
         private CheckBox trailerFavorite;
+        private RadioGroup trailerFeedback;
+        private RadioButton trailerFeedbackPositive;
+        private RadioButton trailerFeedbackNegative;
 
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            trailerThumbnail = itemView.findViewById(R.id.trailer_thumbnail);
             trailerTitle = itemView.findViewById(R.id.trailer_title);
             trailerDescription = itemView.findViewById(R.id.trailer_description);
-            trailerThumbnail = itemView.findViewById(R.id.trailer_thumbnail);
+
+            trailerFeedback = itemView.findViewById(R.id.trailer_feedback);
+            trailerFeedbackPositive = itemView.findViewById(R.id.trailer_feedback_positive);;
+            trailerFeedbackNegative = itemView.findViewById(R.id.trailer_feedback_negative);;
+
             trailerFavorite = itemView.findViewById(R.id.trailer_favorite);
         }
     }
@@ -147,14 +164,21 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
 
         });
 
-        /*holder.trailerDescription.setOnClickListener(new View.OnClickListener() {
+        holder.trailerFeedbackPositive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null)
-                    listener.onFeedbackClick(position);
+                    listener.onFeedbackPositiveClick(v, position);
             }
+        });
 
-        });*/
+        holder.trailerFeedbackNegative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null)
+                    listener.onFeedbackNegativeClick(v, position);
+            }
+        });
 
     }
 

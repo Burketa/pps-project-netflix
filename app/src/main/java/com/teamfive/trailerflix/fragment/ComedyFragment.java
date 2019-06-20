@@ -83,8 +83,19 @@ public class ComedyFragment extends Fragment {
             }
 
             @Override
-            public void onFeedbackClick(int position) {
+            public void onFeedbackPositiveClick(View v, int position) {
+                Trailer t = trailerList.get(position);
+                t.setFeedback(true);
+                Data.updateFeedback(t, true);
+                Toast.makeText(getContext(), t.getTitle() + ": Like", Toast.LENGTH_SHORT).show();
+            }
 
+            @Override
+            public void onFeedbackNegativeClick(View v, int position) {
+                Trailer t = trailerList.get(position);
+                t.setFeedback(false);
+                Data.updateFeedback(t, false);
+                Toast.makeText(getContext(), t.getTitle() + ": Dislike", Toast.LENGTH_SHORT).show();
             }
         });
 

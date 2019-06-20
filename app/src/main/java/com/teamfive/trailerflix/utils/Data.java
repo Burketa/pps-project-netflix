@@ -66,6 +66,11 @@ public class Data{
         }
     }
 
+    public static void updateFeedback(Trailer t, boolean b)
+    {
+        trailerList.get(trailerList.indexOf(t)).setFeedback(b);
+    }
+
     public void startTask(Context c) {
         this.c = c;
         for(Trailer t : trailerList) {

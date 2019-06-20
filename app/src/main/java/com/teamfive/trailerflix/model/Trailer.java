@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 public class Trailer implements Serializable {
 
-    public static final int ACAO = 0;
-    public static final int COMEDIA = 1;
+    public static final int ACTION = 0;
+    public static final int COMEDY = 1;
 
     private String trailerYoutubeId;
+    private String trailerIMDB;
+
     private String title;
     private int category;
     private String description;
@@ -19,9 +21,11 @@ public class Trailer implements Serializable {
 
     }
 
-    public Trailer(int category, String trailerYoutubeId, String title, String description,
+    public Trailer(String trailerYoutubeId, String trailerIMDB, int category,  String title,
+                   String description,
                    int launchYear, boolean isFavorite, boolean feedback) {
         this.trailerYoutubeId = trailerYoutubeId;
+        this.trailerIMDB = trailerIMDB;
         this.title = title;
         this.category = category;
         this.description = description;

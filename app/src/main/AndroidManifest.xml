@@ -16,6 +16,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".activities.PlayerActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
@@ -25,11 +26,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CadastroAcitivity"
+            android:parentActivityName=".activities.LoginActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation"
+            android:parentActivityName=".activities.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.LoginActivity"

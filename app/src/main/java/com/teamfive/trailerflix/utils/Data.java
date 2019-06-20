@@ -156,7 +156,7 @@ public class Data{
                     Trailer info = trailerList.get(trailerList.indexOf(t));
                     info.setJson(result);
                     info.setTitle(obj.getString("Title"));
-                    info.setDescription(obj.getString("imdbRating"));
+                    info.setDescription("IMDb: " + obj.getString("imdbRating"));
                     if(info.getCategory() == 0) {
                         if (obj.getString("Genre").contains("Action"))
                             info.setCategory(Trailer.ACTION);

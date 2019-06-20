@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 //abrirConfiguracoes();
                 //break;
             case R.id.sair:
-                Toast.makeText(this, "Saindo", Toast.LENGTH_SHORT).show();
+                sair();
                 break;
         }
 
@@ -75,5 +75,10 @@ public class MainActivity extends AppCompatActivity {
     public void abrirConfiguracoes() {
         Intent intent = new Intent(MainActivity.this, ConfigActivity.class);
         startActivity(intent);
+    }
+    public void sair()
+    {
+        Intent i = new Intent(getBaseContext(), LoginActivity.class);
+        startActivity(i);
     }
 }

@@ -20,20 +20,20 @@ import com.teamfive.trailerflix.model.Trailer;
 import com.teamfive.trailerflix.utils.Data;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ComedyFragment extends Fragment {
-
+public class TerrorFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private TrailerAdapter adapter;
     private ArrayList<Trailer> trailerList = new ArrayList<>();
 
-    public ComedyFragment() {
+    public TerrorFragment() {
         // Required empty public constructor
     }
 
@@ -112,7 +112,7 @@ public class ComedyFragment extends Fragment {
         trailerList.clear();
 
         for (Trailer t : Data.trailerList) {
-            if (t.getCategory() == Trailer.COMEDY)
+            if (t.getCategory() == Trailer.TERROR)
                 trailerList.add(t);
         }
 
@@ -133,4 +133,8 @@ public class ComedyFragment extends Fragment {
         trailerList.addAll(notFavorites);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

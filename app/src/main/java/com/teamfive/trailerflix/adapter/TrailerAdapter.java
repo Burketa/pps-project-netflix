@@ -73,11 +73,16 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
         else
             holder.trailerFavorite.setChecked(false);
 
-        if (trailer.getFeedback())
-            holder.trailerFeedbackPositive.setChecked(true);
-        else
-            holder.trailerFeedbackNegative.setChecked(true);
+        switch (trailer.getFeedback()) {
 
+            case Trailer.POSITIVE:
+                holder.trailerFeedbackPositive.setChecked(true);
+                break;
+
+            case Trailer.NEGATVIE:
+                holder.trailerFeedbackNegative.setChecked(true);
+                break;
+        }
         setListeners(holder, listener, position);
 
     }

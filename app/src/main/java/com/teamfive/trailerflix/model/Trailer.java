@@ -1,13 +1,14 @@
 package com.teamfive.trailerflix.model;
 
-import org.json.JSONObject;
-
 import java.io.Serializable;
 
-public class Trailer implements Serializable {
+public class Trailer implements Serializable, Comparable<Trailer>{
 
     public static final int ACTION = 1;
-    public static final int COMEDY = 2;
+    public static final int ADVENTURE = 2;
+    public static final int COMEDY = 3;
+    public static final int FICTION = 4;
+    public static final int TERROR = 5;
 
     public static final int UNRATED = 0;
     public static final int POSITIVE = 1;
@@ -19,30 +20,26 @@ public class Trailer implements Serializable {
     private String title;
     private int category;
     private String description;
-    private int launchYear;
     private boolean isFavorite;
-    private boolean feedback;
+    private int feedback;
+
     private String json;
 
     public Trailer() {
 
     }
 
-    public Trailer(String trailerIMDBId, String trailerYoutubeId,  boolean isFavorite,
-                   boolean feedback) {
+    public Trailer(String trailerIMDBId, String trailerYoutubeId,  boolean isFavorite) {
         this.trailerIMDBId = trailerIMDBId;
         this.trailerYoutubeId = trailerYoutubeId;
         this.isFavorite = isFavorite;
-        this.feedback = feedback;
     }
 
-    public Trailer(int category, String trailerIMDBId, String trailerYoutubeId,  boolean isFavorite,
-                   boolean feedback) {
+    public Trailer(int category, String trailerIMDBId, String trailerYoutubeId,  boolean isFavorite) {
         this.category = category;
         this.trailerIMDBId = trailerIMDBId;
         this.trailerYoutubeId = trailerYoutubeId;
         this.isFavorite = isFavorite;
-        this.feedback = feedback;
     }
 
     public String getJson() {
@@ -86,14 +83,6 @@ public class Trailer implements Serializable {
         this.description = description;
     }
 
-    public int getLaunchYear() {
-        return launchYear;
-    }
-
-    public void setLaunchYear(int launchYear) {
-        this.launchYear = launchYear;
-    }
-
     public boolean isFavorite() {
         return isFavorite;
     }
@@ -110,11 +99,11 @@ public class Trailer implements Serializable {
         this.trailerYoutubeId = trailerYoutubeId;
     }
 
-    public boolean getFeedback() {
+    public int getFeedback() {
         return feedback;
     }
 
-    public void setFeedback(boolean feedback) {
+    public void setFeedback(int feedback) {
         this.feedback = feedback;
     }
 
@@ -126,4 +115,11 @@ public class Trailer implements Serializable {
         this.trailerIMDBId = trailerIMDBId;
     }
 
+    @Override
+    public int compareTo(Trailer o) {
+        if(getTitle() != null)
+            return this.getTitle().compareTo(o.getTitle());
+        else
+            return 0;
+    }
 }

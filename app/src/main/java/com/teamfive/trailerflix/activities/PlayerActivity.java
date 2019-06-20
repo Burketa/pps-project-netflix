@@ -33,15 +33,7 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
         trailer = (Trailer)b.getSerializable("trailer");
 
         //Referencias
-        title = findViewById(R.id.movie_title);
-        favorite = findViewById(R.id.cb_favorite);
-        feedback = findViewById(R.id.rg_feedback);
         playerView = findViewById(R.id.player_view);
-
-        //Setup
-        title.setText(trailer.getTitle());
-        favorite.setChecked(trailer.isFavorite());
-
 
         playerView.initialize(getResources().getString(R.string.youtube_key), this);
 
@@ -49,11 +41,9 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-
-        //TODO: pensar em um jeito de deixar legal pra dar um play no video automatico
         youTubePlayer.setFullscreen(true);
-        //youTubePlayer.setShowFullscreenButton(false);
-        youTubePlayer.loadVideo( trailer.getTrailerYoutubeId() );
+        youTubePlayer.setShowFullscreenButton(false);
+        youTubePlayer.loadVideo(trailer.getTrailerYoutubeId());
     }
 
     @Override

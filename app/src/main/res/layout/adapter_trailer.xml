@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingBottom="16dp">
+    android:paddingBottom="32dp">
 
 
     <ImageView
@@ -14,7 +14,7 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +23,7 @@
         android:layout_width="200dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
-        android:gravity="center"
+        android:gravity="bottom|center|center_horizontal"
         android:text="Titulo do filme"
         android:textColor="@android:color/white"
         android:textSize="18dp"
@@ -34,17 +34,19 @@
 
     <TextView
         android:id="@+id/trailer_description"
-        android:layout_width="200dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:gravity="center"
+        android:gravity="center|center_horizontal|left"
         android:text="Descrição do filme"
         android:textColor="@color/hintColor"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/trailer_favorite"
-        app:layout_constraintStart_toEndOf="@+id/trailer_thumbnail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/trailer_title" />
 
     <CheckBox
@@ -52,11 +54,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="356dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:button="@drawable/star"
         android:gravity="right|center_vertical"
         android:paddingTop="82dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,18 +68,19 @@
         android:id="@+id/trailer_feedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/trailer_description"
+        app:layout_constraintEnd_toStartOf="@+id/trailer_favorite"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toEndOf="@+id/trailer_thumbnail"
         app:layout_constraintTop_toBottomOf="@+id/trailer_description">
 
         <RadioButton
             android:id="@+id/trailer_feedback_positive"
-            android:layout_width="100dp"
+            android:layout_width="81dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@drawable/thumb_up"
@@ -83,12 +88,47 @@
 
         <RadioButton
             android:id="@+id/trailer_feedback_negative"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:button="@drawable/thumb_down"
-            android:gravity="center" />
+            android:button="@drawable/thumb_down" />
     </RadioGroup>
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trailer_feedback"
+        app:layout_constraintVertical_bias="0.25"
+        app:srcCompat="@color/colorPrimaryDark" />
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/divider"
+        android:layout_width="300dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/trailer_thumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/trailer_title"
+        app:srcCompat="@drawable/imdb_logo" />
 
 </android.support.constraint.ConstraintLayout>

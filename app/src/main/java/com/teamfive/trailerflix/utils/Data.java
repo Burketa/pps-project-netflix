@@ -38,17 +38,17 @@ public class Data{
     private Context c;
 
     public static List<Trailer> trailerList = Arrays.asList(
-            new Trailer("tt0451279", "bldAkEUANWA", true, false),
-            new Trailer("tt4154796", "g6ng8iy-l0U", false, true),
-            new Trailer("tt1979376", "wmiIUN-7qhE", false, false),
-            new Trailer("tt6139732", "PRyOvcOhtms", true, true),
-            new Trailer("tt9853264", "qk7AkLgXK4k", false,true),
-            new Trailer("tt1298644", "QxsWq53cV80",false,false),
-            new Trailer(Trailer.COMEDY,"tt9214310", "FWFMr44Rmjw",true,false),
-            new Trailer("tt2139881", "FQFPrMNcDhA",false, false),
-            new Trailer("tt8211942", "AVdjEY4BMxs", false, false),
-            new Trailer(Trailer.COMEDY,"tt5814534", "KarvuJWMLjI", false,false),
-            new Trailer("tt4139588", "cdAZYIgdh6M",true, false)
+            new Trailer("tt0451279", "bldAkEUANWA", true),
+            new Trailer("tt4154796", "g6ng8iy-l0U", false),
+            new Trailer("tt1979376", "wmiIUN-7qhE", false),
+            new Trailer("tt6139732", "PRyOvcOhtms", true),
+            new Trailer("tt9853264", "qk7AkLgXK4k", false),
+            new Trailer("tt1298644", "QxsWq53cV80",false),
+            new Trailer(Trailer.COMEDY,"tt9214310", "FWFMr44Rmjw",true),
+            new Trailer("tt2139881", "FQFPrMNcDhA",false),
+            new Trailer("tt8211942", "AVdjEY4BMxs", false),
+            new Trailer(Trailer.COMEDY,"tt5814534", "KarvuJWMLjI", false),
+            new Trailer("tt4139588", "cdAZYIgdh6M",true)
     );
 
     public static List<Trailer> favoriteList = new ArrayList<>();
@@ -66,9 +66,9 @@ public class Data{
         }
     }
 
-    public static void updateFeedback(Trailer t, boolean b)
+    public static void updateFeedback(Trailer t, int i)
     {
-        trailerList.get(trailerList.indexOf(t)).setFeedback(b);
+        trailerList.get(trailerList.indexOf(t)).setFeedback(i);
     }
 
     public void startTask(Context c) {
@@ -161,7 +161,7 @@ public class Data{
                     Trailer info = trailerList.get(trailerList.indexOf(t));
                     info.setJson(result);
                     info.setTitle(obj.getString("Title"));
-                    info.setDescription("IMDb: " + obj.getString("imdbRating"));
+                    info.setDescription(obj.getString("imdbRating"));
                     if(info.getCategory() == 0) {
                         if (obj.getString("Genre").contains("Action"))
                             info.setCategory(Trailer.ACTION);

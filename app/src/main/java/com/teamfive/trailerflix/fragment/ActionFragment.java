@@ -20,6 +20,9 @@ import com.teamfive.trailerflix.model.Trailer;
 import com.teamfive.trailerflix.utils.Data;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +48,7 @@ public class ActionFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_view);
 
         //Popular lista de trailers estatica
-        if(trailerList.size() == 0)
+        if (trailerList.size() == 0)
             popularListaTrailers();
 
         //configurar adapter
@@ -64,11 +67,10 @@ public class ActionFragment extends Fragment {
             public void onFavoriteClick(int position) {
                 Trailer trailer = trailerList.get(position);
 
-                if(!trailer.isFavorite()) {
+                if (!trailer.isFavorite()) {
                     Toast.makeText(getContext(), trailer.getTitle() + " Favoritado",
                             Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Toast.makeText(getContext(), trailer.getTitle() + " Desfavoritado",
                             Toast.LENGTH_SHORT).show();
                 }
@@ -84,16 +86,16 @@ public class ActionFragment extends Fragment {
             @Override
             public void onFeedbackPositiveClick(View v, int position) {
                 Trailer t = trailerList.get(position);
-                t.setFeedback(true);
-                Data.updateFeedback(t, true);
+                t.setFeedback(Trailer.POSITIVE);
+                Data.updateFeedback(t, Trailer.POSITIVE);
                 Toast.makeText(getContext(), t.getTitle() + ": Like", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFeedbackNegativeClick(View v, int position) {
                 Trailer t = trailerList.get(position);
-                t.setFeedback(false);
-                Data.updateFeedback(t, false);
+                t.setFeedback(Trailer.NEGATVIE);
+                Data.updateFeedback(t, Trailer.NEGATVIE);
                 Toast.makeText(getContext(), t.getTitle() + ": Dislike", Toast.LENGTH_SHORT).show();
             }
         });
@@ -103,46 +105,32 @@ public class ActionFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-
-        /*recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(
-                        getActivity(),
-                        recyclerView,
-                        new RecyclerItemClickListener.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(View view, int position) {
-
-                                Trailer trailer = trailerList.get(position);
-                                Intent i = new Intent(getActivity(), PlayerActivity.class);
-                                i.putExtra("trailer", trailer);
-                                startActivityForResult(i, 0);
-
-                            }
-
-                            @Override
-                            public void onLongItemClick(View view, int position) {
-
-                            }
-
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                            }
-                        }
-                )
-        );*/
-
         return view;
     }
 
     private void popularListaTrailers() {
         trailerList.clear();
 
-        for(Trailer t : Data.trailerList)
-        {
-            if(t.getCategory() == Trailer.ACTION)
+        for (Trailer t : Data.trailerList) {
+            if (t.getCategory() == Trailer.ACTION)
                 trailerList.add(t);
         }
+
+        if (trailerList != null)
+            Collections.sort(trailerList);
+
+        List<Trailer> aux = trailerList;
+        List<Trailer> favorites = new ArrayList<>();
+        List<Trailer> notFavorites = new ArrayList<>();
+        for (Trailer t : aux) {
+            if (t.isFavorite())
+                favorites.add(t);
+            else
+                notFavorites.add(t);
+        }
+        trailerList.clear();
+        trailerList.addAll(favorites);
+        trailerList.addAll(notFavorites);
     }
 
     @Override

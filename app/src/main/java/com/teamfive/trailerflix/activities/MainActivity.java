@@ -15,8 +15,11 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.teamfive.trailerflix.R;
 import com.teamfive.trailerflix.fragment.ActionFragment;
+import com.teamfive.trailerflix.fragment.AdventureFragment;
 import com.teamfive.trailerflix.fragment.ComedyFragment;
 import com.teamfive.trailerflix.fragment.FavoritesFragment;
+import com.teamfive.trailerflix.fragment.FictionFragment;
+import com.teamfive.trailerflix.fragment.TerrorFragment;
 import com.teamfive.trailerflix.utils.Data;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
                 FragmentPagerItems.with(this)
                         .add("Favoritos", FavoritesFragment.class)
                         .add("Açâo", ActionFragment.class)
+                        .add("Aventura", AdventureFragment.class)
                         .add("Comédia", ComedyFragment.class)
+                        .add("Ficção", FictionFragment.class)
+                        .add("Terror", TerrorFragment.class)
                         .create()
         );
 

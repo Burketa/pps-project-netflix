@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.teamfive.trailerflix.R;
+import com.teamfive.trailerflix.utils.Data;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,7 +24,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void abrirTelaPrincipal(View view)
     {
-        Intent intent = new Intent(getBaseContext(), MainActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(getBaseContext(), MainActivity.class);
+        //startActivity(intent);
+        Data data = new Data();
+        //data.startTask(getBaseContext());
+        data.getMovieData();
     }
 }

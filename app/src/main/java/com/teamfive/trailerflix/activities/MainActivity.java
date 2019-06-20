@@ -17,6 +17,7 @@ import com.teamfive.trailerflix.R;
 import com.teamfive.trailerflix.fragment.ActionFragment;
 import com.teamfive.trailerflix.fragment.ComedyFragment;
 import com.teamfive.trailerflix.fragment.FavoritesFragment;
+import com.teamfive.trailerflix.utils.Data;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
+        //Data data = new Data();
+        //data.startTask();
+        //data.getMovieData();
+
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
                 getSupportFragmentManager(),
                 FragmentPagerItems.with(this)
@@ -41,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         final ViewPager viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
-//TODO: Evento de mudar de tela refresh no recycler view.
+
+        //TODO: Evento de mudar de tela refresh no recycler view.
         SmartTabLayout viewPagerTab = findViewById(R.id.viewPagerTab);
         viewPagerTab.setViewPager(viewPager);
     }

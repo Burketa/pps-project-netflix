@@ -8,9 +8,9 @@ public class Trailer implements Serializable {
     public static final int COMEDY = 1;
 
     private String trailerYoutubeId;
-    private String trailerIMDB;
+    private String trailerIMDBId;
 
-    private String title;
+    private String Title;
     private int category;
     private String description;
     private int launchYear;
@@ -21,15 +21,10 @@ public class Trailer implements Serializable {
 
     }
 
-    public Trailer(String trailerYoutubeId, String trailerIMDB, int category,  String title,
-                   String description,
-                   int launchYear, boolean isFavorite, boolean feedback) {
+    public Trailer(String trailerIMDBId, String trailerYoutubeId,  boolean isFavorite,
+                   boolean feedback) {
+        this.trailerIMDBId = trailerIMDBId;
         this.trailerYoutubeId = trailerYoutubeId;
-        this.trailerIMDB = trailerIMDB;
-        this.title = title;
-        this.category = category;
-        this.description = description;
-        this.launchYear = launchYear;
         this.isFavorite = isFavorite;
         this.feedback = feedback;
     }
@@ -52,11 +47,11 @@ public class Trailer implements Serializable {
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.Title = title;
     }
 
     public String getDescription() {
@@ -97,6 +92,14 @@ public class Trailer implements Serializable {
 
     public void setFeedback(boolean feedback) {
         this.feedback = feedback;
+    }
+
+    public String getTrailerIMDBId() {
+        return trailerIMDBId;
+    }
+
+    public void setTrailerIMDBId(String trailerIMDBId) {
+        this.trailerIMDBId = trailerIMDBId;
     }
 
 }

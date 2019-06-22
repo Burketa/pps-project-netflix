@@ -59,7 +59,7 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.MyViewHo
         Trailer trailer = trailers.get(position);
 
         holder.trailerTitle.setText(trailer.getTitle());
-        holder.trailerDescription.setText(trailer.getDescription());
+        holder.trailerDescription.setText(trailer.getImdbRating());
 
         Glide
                 .with(context)

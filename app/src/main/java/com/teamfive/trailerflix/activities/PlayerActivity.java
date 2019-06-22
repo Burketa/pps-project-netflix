@@ -1,8 +1,6 @@
 package com.teamfive.trailerflix.activities;
 
 import android.os.Bundle;
-import android.widget.CheckBox;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -16,11 +14,11 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
     private Trailer trailer;
 
-    private TextView title;
-    private CheckBox favorite;
-    private RadioGroup feedback;
-
     private YouTubePlayerView playerView;
+    private TextView title;
+    private TextView year;
+    private TextView plot;
+
 
 
     @Override
@@ -34,15 +32,22 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
 
         //Referencias
         playerView = findViewById(R.id.player_view);
+        title = findViewById(R.id.descricao_titulo);
+        year = findViewById(R.id.descricao_ano);
+        plot = findViewById(R.id.descricao_plot);
+        //
 
+        title.setText(trailer.getTitle());
+        year.setText(trailer.getYear());
+        plot.setText(trailer.getPlot());
         playerView.initialize(getResources().getString(R.string.youtube_key), this);
 
     }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-        youTubePlayer.setFullscreen(true);
-        youTubePlayer.setShowFullscreenButton(false);
+        //youTubePlayer.setFullscreen(true);
+        //youTubePlayer.setShowFullscreenButton(false);
         youTubePlayer.loadVideo(trailer.getTrailerYoutubeId());
     }
 

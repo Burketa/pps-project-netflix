@@ -3,12 +3,8 @@ package com.teamfive.trailerflix.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.teamfive.trailerflix.activities.LoginActivity;
 import com.teamfive.trailerflix.activities.MainActivity;
-import com.teamfive.trailerflix.api.IMDBService;
 import com.teamfive.trailerflix.model.Trailer;
 
 import org.json.JSONException;
@@ -21,17 +17,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Data{
 
@@ -161,7 +149,9 @@ public class Data{
                     Trailer info = trailerList.get(trailerList.indexOf(t));
                     info.setJson(result);
                     info.setTitle(obj.getString("Title"));
-                    info.setDescription(obj.getString("imdbRating"));
+                    info.setImdbRating(obj.getString("imdbRating"));
+                    info.setYear(obj.getString("Year"));
+                    info.setPlot(obj.getString("Plot"));
                     if(info.getCategory() == 0) {
                         if (obj.getString("Genre").contains("Action"))
                             info.setCategory(Trailer.ACTION);

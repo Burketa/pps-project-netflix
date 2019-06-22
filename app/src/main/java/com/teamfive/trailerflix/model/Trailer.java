@@ -18,8 +18,22 @@ public class Trailer implements Serializable, Comparable<Trailer>{
     private String trailerIMDBId;
 
     private String title;
+
+
+
+    private String year;
     private int category;
-    private String description;
+    private String imdbRating;
+
+    public String getPlot() {
+        return plot;
+    }
+
+    public void setPlot(String plot) {
+        this.plot = plot;
+    }
+
+    private String plot;
     private boolean isFavorite;
     private int feedback;
 
@@ -41,7 +55,13 @@ public class Trailer implements Serializable, Comparable<Trailer>{
         this.trailerYoutubeId = trailerYoutubeId;
         this.isFavorite = isFavorite;
     }
+    public String getYear() {
+        return year;
+    }
 
+    public void setYear(String year) {
+        this.year = year;
+    }
     public String getJson() {
         return json;
     }
@@ -75,12 +95,12 @@ public class Trailer implements Serializable, Comparable<Trailer>{
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getImdbRating() {
+        return imdbRating;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setImdbRating(String imdbRating) {
+        this.imdbRating = imdbRating;
     }
 
     public boolean isFavorite() {

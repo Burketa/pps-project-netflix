@@ -2,7 +2,7 @@ package com.teamfive.trailerflix.model;
 
 import java.io.Serializable;
 
-public class Trailer implements Serializable, Comparable<Trailer>{
+public class Trailer implements Serializable, Comparable<Trailer> {
 
     public static final int ACTION = 1;
     public static final int ADVENTURE = 2;
@@ -17,13 +17,44 @@ public class Trailer implements Serializable, Comparable<Trailer>{
     private String trailerYoutubeId;
     private String trailerIMDBId;
 
+    private boolean isFavorite;
     private String title;
-
-
-
     private String year;
-    private int category;
     private String imdbRating;
+    private String plot;
+    private String json;
+    private int feedback;
+    private int category;
+
+    public Trailer() {
+
+    }
+
+    public Trailer(String trailerIMDBId, String trailerYoutubeId, boolean isFavorite) {
+        this.trailerIMDBId = trailerIMDBId;
+        this.trailerYoutubeId = trailerYoutubeId;
+        this.isFavorite = isFavorite;
+    }
+
+    public Trailer(int category, String trailerIMDBId, String trailerYoutubeId, boolean isFavorite) throws IllegalArgumentException {
+
+        if (category < 0 || category > 5) {
+            throw new IllegalArgumentException("Categoria não pode ser maior do que as declaradas.");
+        }
+
+        if (trailerIMDBId == null || trailerIMDBId.isEmpty()) {
+            throw new IllegalArgumentException("IMDbId não pode ser nulo.");
+        }
+
+        if (trailerYoutubeId == null || trailerYoutubeId.isEmpty()) {
+            throw new IllegalArgumentException("YoutubeId não pode ser nulo.");
+        }
+
+        this.category = category;
+        this.trailerIMDBId = trailerIMDBId;
+        this.trailerYoutubeId = trailerYoutubeId;
+        this.isFavorite = isFavorite;
+    }
 
     public String getPlot() {
         return plot;
@@ -33,28 +64,6 @@ public class Trailer implements Serializable, Comparable<Trailer>{
         this.plot = plot;
     }
 
-    private String plot;
-    private boolean isFavorite;
-    private int feedback;
-
-    private String json;
-
-    public Trailer() {
-
-    }
-
-    public Trailer(String trailerIMDBId, String trailerYoutubeId,  boolean isFavorite) {
-        this.trailerIMDBId = trailerIMDBId;
-        this.trailerYoutubeId = trailerYoutubeId;
-        this.isFavorite = isFavorite;
-    }
-
-    public Trailer(int category, String trailerIMDBId, String trailerYoutubeId,  boolean isFavorite) {
-        this.category = category;
-        this.trailerIMDBId = trailerIMDBId;
-        this.trailerYoutubeId = trailerYoutubeId;
-        this.isFavorite = isFavorite;
-    }
     public String getYear() {
         return year;
     }
@@ -62,6 +71,7 @@ public class Trailer implements Serializable, Comparable<Trailer>{
     public void setYear(String year) {
         this.year = year;
     }
+
     public String getJson() {
         return json;
     }
@@ -75,11 +85,13 @@ public class Trailer implements Serializable, Comparable<Trailer>{
     }
 
     public String getCategoryString() {
-        switch (category)
-        {
-            case 1: return "Ação";
-            case 2: return "Comédia";
-            default: return "";
+        switch (category) {
+            case 1:
+                return "Ação";
+            case 2:
+                return "Comédia";
+            default:
+                return "";
         }
     }
 
@@ -137,7 +149,7 @@ public class Trailer implements Serializable, Comparable<Trailer>{
 
     @Override
     public int compareTo(Trailer o) {
-        if(getTitle() != null)
+        if (getTitle() != null)
             return this.getTitle().compareTo(o.getTitle());
         else
             return 0;

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Data{
+public class Data {
 
     private Context c;
 
@@ -31,37 +31,33 @@ public class Data{
             new Trailer("tt1979376", "wmiIUN-7qhE", false),
             new Trailer("tt6139732", "PRyOvcOhtms", true),
             new Trailer("tt9853264", "qk7AkLgXK4k", false),
-            new Trailer("tt1298644", "QxsWq53cV80",false),
-            new Trailer(Trailer.COMEDY,"tt9214310", "FWFMr44Rmjw",true),
-            new Trailer("tt2139881", "FQFPrMNcDhA",false),
+            new Trailer("tt1298644", "QxsWq53cV80", false),
+            new Trailer(Trailer.COMEDY, "tt9214310", "FWFMr44Rmjw", true),
+            new Trailer("tt2139881", "FQFPrMNcDhA", false),
             new Trailer("tt8211942", "AVdjEY4BMxs", false),
-            new Trailer(Trailer.COMEDY,"tt5814534", "KarvuJWMLjI", false),
-            new Trailer("tt4139588", "cdAZYIgdh6M",true)
+            new Trailer(Trailer.COMEDY, "tt5814534", "KarvuJWMLjI", false),
+            new Trailer("tt4139588", "cdAZYIgdh6M", true)
     );
 
     public static List<Trailer> favoriteList = new ArrayList<>();
-    public static List<Trailer> imdbList = new ArrayList<>();
     public static List<String> jsonList = new ArrayList<>();
 
-    public static void updateFavorites()
-    {
+    public static void updateFavorites() {
         favoriteList.clear();
 
-        for(Trailer t : trailerList)
-        {
-            if(t.isFavorite())
+        for (Trailer t : trailerList) {
+            if (t.isFavorite())
                 favoriteList.add(t);
         }
     }
 
-    public static void updateFeedback(Trailer t, int i)
-    {
+    public static void updateFeedback(Trailer t, int i) {
         trailerList.get(trailerList.indexOf(t)).setFeedback(i);
     }
 
     public void startTask(Context c) {
         this.c = c;
-        for(Trailer t : trailerList) {
+        for (Trailer t : trailerList) {
             //Cria um objeto da task para fazer as tearefas assincronas
             GetIMDBTask task = new GetIMDBTask();
 
@@ -130,12 +126,6 @@ public class Data{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //api_raw_result.insert(api_raw_result.length() - 1,
-         //       ",\"id\":\"" + trailerList.get(i).getTrailerIMDBId() +
-         //       "\"");
-        //if(i < trailerList.size() - 1)
-         //   i++;
-        //api_raw_result.append(",\"id\":\"" + i + "\"}");
         jsonList.add(api_raw_result.toString());
         return api_raw_result.toString();
     }
@@ -143,21 +133,26 @@ public class Data{
     private void setTrailerData(String result) {
         try {
             JSONObject obj = new JSONObject(result);
-            String movieid = obj.getString("imdbID");
+
+            String movieId = obj.getString("imdbID");
+
             for (Trailer t : trailerList) {
-                if(t.getTrailerIMDBId().equals(movieid)) {
+                if (t.getTrailerIMDBId().equals(movieId)) {
                     Trailer info = trailerList.get(trailerList.indexOf(t));
+
                     info.setJson(result);
                     info.setTitle(obj.getString("Title"));
                     info.setImdbRating(obj.getString("imdbRating"));
                     info.setYear(obj.getString("Year"));
                     info.setPlot(obj.getString("Plot"));
-                    if(info.getCategory() == 0) {
+
+                    if (info.getCategory() == 0) {
                         if (obj.getString("Genre").contains("Action"))
                             info.setCategory(Trailer.ACTION);
                         else if (obj.getString("Genre").contains("Comedy"))
                             info.setCategory(Trailer.COMEDY);
                     }
+
                     break;
                 }
             }
@@ -165,6 +160,7 @@ public class Data{
             e.printStackTrace();
         }
     }
+}
 
     /*public void getMovieData()
     {
@@ -200,4 +196,3 @@ public class Data{
             });
         }
     }*/
-}

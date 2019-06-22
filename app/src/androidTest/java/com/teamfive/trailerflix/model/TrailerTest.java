@@ -1,6 +1,6 @@
 package com.teamfive.trailerflix.model;
 
-import junit.framework.TestCase;
+import com.teamfive.trailerflix.utils.Data;
 
 import org.junit.Test;
 
@@ -8,79 +8,39 @@ import static org.junit.Assert.*;
 
 public class TrailerTest {
 
-    @Test
-    public void getJson() {
+    @Test(expected = IllegalArgumentException.class)
+    public void categoriaAbaixoDoRangePossivel() {
+        Trailer t = new Trailer(-5, "a", "a", true);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void categoriaAcimaDoRangePossivel() {
+        Trailer t = new Trailer(10, "a", "a", true);
     }
 
     @Test
-    public void setJson() {
+    public void categoriaEstaNoRangePossivel() {
+        Trailer t = new Trailer(1, "a", "a", true);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void imdbIDStringVazia() {
+        Trailer t = new Trailer(1,"", "a", true);
     }
 
     @Test
-    public void getCategory() {
-        Trailer t = new Trailer(9,"","",true);
-        int result = t.getCategory();
+    public void imdbIDStringnaoVazia() {
+        Trailer t = new Trailer(1,"a", "a", true);
+    }
 
-        assertNotNull(t);
+    @Test(expected = IllegalArgumentException.class)
+    public void youtubeIdStringVazia() {
+        Trailer t = new Trailer(1,"a", "", true);
     }
 
     @Test
-    public void getCategoryString() {
+    public void youtubeIdStringNaoVazia() {
+        Trailer t = new Trailer(1,"a", "a", true);
     }
 
-    @Test
-    public void setCategory() {
-    }
-
-    @Test
-    public void getTitle() {
-    }
-
-    @Test
-    public void setTitle() {
-    }
-
-    @Test
-    public void getDescription() {
-    }
-
-    @Test
-    public void setDescription() {
-    }
-
-    @Test
-    public void isFavorite() {
-    }
-
-    @Test
-    public void setFavorite() {
-    }
-
-    @Test
-    public void getTrailerYoutubeId() {
-    }
-
-    @Test
-    public void setTrailerYoutubeId() {
-    }
-
-    @Test
-    public void getFeedback() {
-    }
-
-    @Test
-    public void setFeedback() {
-    }
-
-    @Test
-    public void getTrailerIMDBId() {
-    }
-
-    @Test
-    public void setTrailerIMDBId() {
-    }
-
-    @Test
-    public void compareTo() {
-    }
 }

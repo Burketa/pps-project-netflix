@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "554790071441",
+    "firebase_url": "https://trailerflix-244200.firebaseio.com",
+    "project_id": "trailerflix-244200",
+    "storage_bucket": "trailerflix-244200.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554790071441:android:d1b83853f14bb245",
+        "android_client_info": {
+          "package_name": "com.teamfive.trailerflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554790071441-8k1af0qsmfgvvmj5690pj64rqoa63fbo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teamfive.trailerflix",
+            "certificate_hash": "a12bdeb20102894143a3dc7837f688a0fa8572c3"
+          }
+        },
+        {
+          "client_id": "554790071441-6agcs1hqpos88c8m41ep71v64pi7umbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0lzGzW1pffcTkxedHKEsZ7humz0ItDV4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554790071441-6agcs1hqpos88c8m41ep71v64pi7umbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

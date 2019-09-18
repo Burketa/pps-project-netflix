@@ -37,6 +37,7 @@ public class Data {
             new Trailer("tt8211942", "AVdjEY4BMxs", false),
             new Trailer(Trailer.COMEDY, "tt5814534", "KarvuJWMLjI", false),
             new Trailer("tt4139588", "cdAZYIgdh6M", true)
+            new Trailer("tt0468569", "zqfz04yCTnE", true)
     );
 
     public static List<Trailer> favoriteList = new ArrayList<>();
